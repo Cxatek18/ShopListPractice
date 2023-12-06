@@ -5,6 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import com.team.shoplistpr.domain.ShopItem
 import com.team.shoplistpr.domain.ShopListRepository
 import java.util.TreeSet
+import kotlin.random.Random
 
 object ShopListRepositoryImpl : ShopListRepository {
 
@@ -13,8 +14,8 @@ object ShopListRepositoryImpl : ShopListRepository {
     private val shopListLD = MutableLiveData<List<ShopItem>>()
 
     init {
-        for(i in 0 until 10){
-            val item: ShopItem = ShopItem("Name $i", i, true)
+        for(i in 0 until 100){
+            val item: ShopItem = ShopItem("Name $i", i, Random.nextBoolean())
             addShopItem(item)
         }
     }
