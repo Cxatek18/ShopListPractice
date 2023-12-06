@@ -4,10 +4,11 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.team.shoplistpr.domain.ShopItem
 import com.team.shoplistpr.domain.ShopListRepository
+import java.util.TreeSet
 
 object ShopListRepositoryImpl : ShopListRepository {
 
-    private val shopList: MutableList<ShopItem> = mutableListOf()
+    private val shopList: TreeSet<ShopItem> = sortedSetOf<ShopItem>({o1, o2 -> o1.id.compareTo(o2.id)})
     private var autoIncrementId: Int = 0
     private val shopListLD = MutableLiveData<List<ShopItem>>()
 
